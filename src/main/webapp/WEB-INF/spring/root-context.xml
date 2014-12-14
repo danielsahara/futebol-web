@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- Factory bean that creates the Mongo instance -->
+	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		<property name="host" value="ds061370.mongolab.com:61370" />
+	</bean>
+
+	<!-- MongoTemplate for connecting and quering the documents in the database -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="heroku_app32511115" />
+		<constructor-arg name="userCredentials" ref="userCredentials"/>
+	</bean>
+	
+	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
+	  <constructor-arg name="username" value="futebol" />
+	  <constructor-arg name="password" value="futebol" />
+	</bean>
+
+	<mongo:repositories base-package="br.com.futebol" />
+
+
 </beans>
