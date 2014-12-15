@@ -26,7 +26,7 @@ public class JogadorController {
 	public String save(Jogador jogador) {
 		jogadorRepository.save(jogador);
 		
-		return "home";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/jogador/all", method = RequestMethod.GET)
