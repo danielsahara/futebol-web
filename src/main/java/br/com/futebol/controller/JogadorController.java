@@ -1,4 +1,4 @@
-package br.com.futebol;
+package br.com.futebol.controller;
 
 import java.util.List;
 
@@ -11,32 +11,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.futebol.model.Jogador;
 import br.com.futebol.repository.JogadorRepository;
 
-@Controller(value = "/futebol")
-public class FutebolController {
-
+@Controller
+public class JogadorController {
+	
 	@Autowired
 	private JogadorRepository jogadorRepository;
-	
-	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-	public void teste() {
-		System.out.println("aaa");
-		
-		Jogador jogador = new Jogador();
-		jogador.setNome("daniel");
-		
-		
-		jogadorRepository.save(jogador);
+
+	@RequestMapping(value = "/jogador", method = RequestMethod.GET)
+	public void form() {
+
 	}
-	@RequestMapping(value = "/teste2", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/jogador", method = RequestMethod.POST)
+	public String save(Jogador jogador) {
+		jogadorRepository.save(jogador);
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/jogador/all", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Jogador> teste2() {
-		System.out.println("bbb");
-		
-		Jogador jogador = new Jogador();
-		jogador.setNome("daniel");
-		
-		
+	public List<Jogador> list() {
 		return jogadorRepository.findAll();
 	}
-	
 }

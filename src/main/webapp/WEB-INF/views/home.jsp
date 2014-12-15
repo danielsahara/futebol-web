@@ -5,10 +5,7 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}.ddd 2222222</P>
+<a href="jogador">Novo</a> <br />
+<a href="jogador/all">Listar</a>
 </body>
 </html>

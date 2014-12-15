@@ -1,14 +1,13 @@
 package br.com.futebol.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Jogador {
+public class Jogador implements Serializable{
 	@Id
 	private BigInteger id;
 	

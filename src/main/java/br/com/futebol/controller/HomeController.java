@@ -1,4 +1,4 @@
-package br.com.futebol;
+package br.com.futebol.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
