@@ -19,7 +19,7 @@ function JogadorController($scope, $http) {
 			<tr ng-repeat="jogador in jogadores">
 				<td ><strong>{{ jogador.nome }}</strong></td>
 				<td><strong>{{ jogador.email }}</strong></td>
-				<td><strong>{{ jogador.Celular }}</strong></td>
+				<td><strong>{{ jogador.celular }}</strong></td>
 			</tr>
 		</tbody>
 	</table>
