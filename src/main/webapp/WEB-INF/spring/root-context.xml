@@ -8,24 +8,42 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- Factory bean that creates the Mongo instance -->
 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
-<!-- 		<property name="host" value="ds061370.mongolab.com:61370" /> -->
-		<property name="host" value="localhost" />
+		<property name="host" value="ds061370.mongolab.com:61370" />
+<!-- 		<property name="host" value="localhost" /> -->
 	</bean>
 
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="futebol" />
-<!-- 		<constructor-arg name="databaseName" value="heroku_app32511115" /> -->
-<!-- 		<constructor-arg name="userCredentials" ref="userCredentials"/> -->
+<!-- 		<constructor-arg name="databaseName" value="futebol" /> -->
+		<constructor-arg name="databaseName" value="heroku_app32511115" />
+		<constructor-arg name="userCredentials" ref="userCredentials"/>
 	</bean>
 	
 	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
 	  <constructor-arg name="username" value="futebol" />
 	  <constructor-arg name="password" value="futebol" />
 	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.dsahara.com.br" />
+		<property name="port" value="587" />
+		<property name="username" value="teste@dsahara.com.br" />
+		<property name="password" value="daniel" />
+		<property name="javaMailProperties">
+		   <props>
+	       	      <prop key="mail.smtp.auth">true</prop>
+<!-- 	       	      <prop key="mail.smtp.starttls.enable">true</prop> -->
+	       	   </props>
+		</property>
+	</bean>
+	
+	<bean id="emailController" class="br.com.futebol.controller.EmailController">
+		<property name="mailSender" ref="mailSender" />
+	</bean>
 
 	<mongo:repositories base-package="br.com.futebol" />
+	
 
-
+	
 </beans>

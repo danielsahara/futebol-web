@@ -15,8 +15,7 @@
 	<script type="text/javascript" src="resources/js/home.js"></script>
 </head>
 <body>
-	<a href="jogador">Novo</a> <br />
-	<a href="jogador/all">Listar Json</a>
+	
 
 	<div ng-controller="JogadorController">
 		<table class="table table-striped table-hover table-bordered">
