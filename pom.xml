@@ -86,10 +86,10 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.15</version>
 			<exclusions>
-<!-- 				<exclusion> -->
-<!-- 					<groupId>javax.mail</groupId> -->
-<!-- 					<artifactId>mail</artifactId> -->
-<!-- 				</exclusion> -->
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
 				<exclusion>
 					<groupId>javax.jms</groupId>
 					<artifactId>jms</artifactId>
@@ -137,6 +137,13 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
 
 		<!-- Test -->
 		<dependency>
