@@ -4,7 +4,7 @@
 <tiles-definitions>
 	
 	<definition name="main" template="/WEB-INF/views/templates/main.jsp">
-		<put-attribute name="titulo" value="Spring Fórum"/>
+		<put-attribute name="titulo" value="Turma do Futebol"/>
 		<put-attribute name="cabecalho" value="/WEB-INF/views/templates/cabecalho.jsp"/>
 		<put-attribute name="rodape" value="/WEB-INF/views/templates/rodape.jsp"/>
 	</definition>
@@ -15,6 +15,10 @@
 	
     <definition name="jogador/form"  extends="main" >
     	<put-attribute name="conteudo" value="/WEB-INF/views/jogador/form_jogador.jsp"/>
+    </definition>
+    
+    <definition name="jogador/form/resultado"  extends="main" >
+    	<put-attribute name="conteudo" value="/WEB-INF/views/jogador/resultado_jogador.jsp"/>
     </definition>
     
     <definition name="jogador/listar"  extends="main" >

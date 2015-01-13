@@ -1,3 +1,10 @@
+<script type="text/javascript" src="resources/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea"
+ });
+</script>
+
 <form action="email/enviar" method="post">
 	<div class="form-group">
     	<label for="email">Assunto:</label>
@@ -5,7 +12,7 @@
   	</div>
   	<div class="form-group">
   	    <label for="texto">Texto:</label>
-  		<textarea name="texto" id="texto" class="form-control"></textarea>
+  		<textarea name="texto" id="texto" class="form-control" rows="10"></textarea>
   	</div>
 	
  <input type="submit" value="Enviar a todos os atletas" class="btn btn-lg btn-success" />

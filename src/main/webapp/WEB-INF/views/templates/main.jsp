@@ -19,7 +19,9 @@
 	
 	<tiles:insertAttribute name="cabecalho"/>
 	
-
+	<div class="alert alert-success">
+    	<strong>${mensagem }</strong>
+	</div>
 	<tiles:insertAttribute name="conteudo"/>
 
 

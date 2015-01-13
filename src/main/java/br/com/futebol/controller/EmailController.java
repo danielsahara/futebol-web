@@ -1,12 +1,17 @@
 package br.com.futebol.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +26,7 @@ public class EmailController {
 	private JogadorRepository jogadorRepository;
 	
 	@Autowired
-	private MailSender mailSender;
+	private JavaMailSender mailSender;
 	 
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public ModelAndView email() {
@@ -30,15 +35,26 @@ public class EmailController {
 	}
 	
 	@RequestMapping(value = "/email/enviar", method = RequestMethod.POST)
-	public void enviarEmail(Email email) {
-		SimpleMailMessage message = new SimpleMailMessage();
+	public String enviarEmail(Email email, Model model) throws UnsupportedEncodingException {
+		MimeMessage message = mailSender.createMimeMessage();
 		
-		message.setFrom("teste@dsahara.com.br");
-		message.setTo("d.otasahara@gmail.com");
-		message.setCc(getEmailJogares());
-		message.setSubject(email.getAssunto());
-		message.setText(email.getTexto());
-		//mailSender.send(message);	
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			String emailRemetente = "d.otasahara@gmail.com";
+			helper.setFrom("teste@dsahara.com.br", "Luis Claudio");
+			helper.setCc(getEmailJogares());
+			helper.setTo(emailRemetente);
+			helper.setReplyTo("lugawal@ig.com.br");
+			helper.setSubject(email.getAssunto());
+			helper.setText(email.getTexto(), true);
+			mailSender.send(message);
+			
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("mensagem", new String("Email enviado aos atletas"));
+		return "email/form";
 	}
 	
 	public String[] getEmailJogares(){
@@ -52,7 +68,7 @@ public class EmailController {
 		return emails.toArray(new String[emails.size()]);
 	}
 	
-	public void setMailSender(MailSender mailSender) {
+	public void setMailSender(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
 	}
 }

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,12 +30,17 @@ public class JogadorController {
 	}
 
 	@RequestMapping(value = "/jogador", method = RequestMethod.POST)
-	public String save(@Valid Jogador jogador, BindingResult bindingResult) {
+	public String save(@Valid Jogador jogador, BindingResult bindingResult, Model model) {
 		 if (bindingResult.hasErrors()) {
+			 model.addAttribute(jogador);
 			 return "jogador/form";
 		 }
 		 jogadorRepository.save(jogador);
-		 return "redirect:/";
+		 
+		 model.addAttribute("mensagem", new String("Atleta cadastrado com sucesso!"));
+		 jogador = new Jogador();
+		 model.addAttribute(jogador);
+		 return "jogador/form";
 	}
 	
 	@RequestMapping(value = "/jogador/listar", method = RequestMethod.GET)
