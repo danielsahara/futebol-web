@@ -9,7 +9,7 @@
 					Atletas</a></li>
 			<li role="presentation"><a href="<%=request.getContextPath()%>/jogador/listar">Listar
 					Atletas</a></li>
-			<li role="presentation"><a href="<%=request.getContextPath()%>/email">Enviar E-mail</a></li>
+			<li role="presentation"><a href="<%=request.getContextPath()%>/email">Enviar E-mail aos Atletas</a></li>
 		</ul>
 	</div>
 

@@ -29,4 +29,8 @@
     	<put-attribute name="conteudo" value="/WEB-INF/views/email/form_email.jsp"/>
     </definition>
     
+     <definition name="login"  extends="main" >
+    	<put-attribute name="conteudo" value="/WEB-INF/views/login/login.jsp"/>
+    </definition>
+    
 </tiles-definitions>

@@ -1,7 +1,10 @@
 package br.com.futebol.model;
 
+
 public class Email {
+	
 	private String assunto;
+	
 	private String texto;
 
 	public String getAssunto() {

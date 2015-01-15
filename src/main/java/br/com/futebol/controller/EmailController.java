@@ -41,7 +41,7 @@ public class EmailController {
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			String emailRemetente = "d.otasahara@gmail.com";
-			helper.setFrom("teste@dsahara.com.br", "Luis Claudio");
+			helper.setFrom("futebol@dsahara.com.br", "Luis Claudio");
 			helper.setCc(getEmailJogares());
 			helper.setTo(emailRemetente);
 			helper.setReplyTo("lugawal@ig.com.br");
