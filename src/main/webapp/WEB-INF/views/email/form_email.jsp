@@ -5,6 +5,7 @@ tinymce.init({
  });
 </script>
 
+<div align="center"><h3>Atenção! Deixe esta Área apenas para o Luis utilizar. Obrigado!</h3></div>
 <form action="email/enviar" method="post">
 	<div class="form-group">
     	<label for="email">Assunto:</label>
